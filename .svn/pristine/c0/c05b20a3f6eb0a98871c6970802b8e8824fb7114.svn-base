@@ -1,0 +1,35 @@
+<%@page import="notices.vo.AnswerVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	AnswerVO vo = (AnswerVO) request.getAttribute("vo");
+%>    
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>답변 수정</title>
+</head>
+<body>
+	<header id="header-container-fluid">
+		<jsp:include page="/main/header.jsp"/>
+		<jsp:include page="/main/headerNav.jsp"/>
+	</header>	
+	<form action="updateAnswer.do" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="qesId" value="<%=vo.getQesId() %>">
+		<table>
+			<tr>
+				<td>I D:</td>
+				<td><%=vo.getQesId() %></td>
+			</tr>
+			<tr>
+				<td>내 용:</td>
+				<td><input type="text" name="ansCon" value="<%=vo.getAnsCon() %>"></td>
+			</tr>
+		</table>
+		<input type="submit" value="답변 수정">
+	</form>
+</body>
+</html>

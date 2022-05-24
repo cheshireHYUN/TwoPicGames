@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="cart">
+		
+	<insert id="insertCart" parameterClass="CartVO">
+		insert into CART values(fn_cart_id, #mem_id#, sysdate, #cart_price#)
+	</insert>
+
+	
+	<insert id="insertGameCart" parameterClass="String">
+	insert into cart_game values(fn_cartgame_id, #gameId#)
+	</insert>
+
+
+<!-- 	<select id="getCartList">
+		select * from cart
+	</select>
+	 -->
+	
+	<select id="getPrice" parameterClass="String" resultClass="String">
+		select game_price
+		from game
+		where game_id = #gameId#
+	</select>
+	
+	<!-- VO에 쓸데없는 컬럼은 넣지 말것!!!  -->
+	<resultMap class="CartVO" id="CartMap">
+		<result property="game_id" column="game_id"/>
+		<result property="cart_price" column="cart_price"/>
+		<result property="cartNo" column="cart_no"/>
+	</resultMap>
+	
+	<select id="getCart" parameterClass="String" resultMap="CartMap">
+		select distinct a.cart_price, b.game_id, a.cart_no
+		from cart a
+		inner join cart_game b
+		on(a.CART_NO = b.CART_NO)
+		and a.mem_id= #mem_id#
+	</select>
+	
+	<!-- 사용자의 결제하지않은 장바구니 모두 불러오기 -->
+	<resultMap class="CartVO" id="CartMap">
+		<result property="cart_price" column="cart_price"/>
+		<result property="cartNo" column="cart_no"/>
+	</resultMap>
+	<select id="selectCart" parameterClass="String" resultMap="CartMap">
+		select cart_no, cart_price
+		from cart
+		where not cart_no in (
+		    select a.cart_no
+		    from cart a
+		    inner join orders b
+		    on(a.cart_no = b.cart_no)
+		)
+		and mem_id = #mem_id#
+	</select>
+	<!-- 사용자의 결제하지않은 장바구니에 해당하는 게임정보 불러오기 -->
+	<select id="getSelectGameId" parameterClass="String" resultClass="String">
+		select game_id
+		from cart_game
+		where cart_no = #cartNo#
+	</select>
+	
+	
+	<!--  헐 이걸로 존재검사도 겸하자!!  -->
+	<select id="checkExist" parameterClass="CartVO" resultClass="String">
+		select a.cart_no
+		from cart a
+		inner join cart_game b
+		on(a.CART_NO = b.CART_NO)
+		where a.mem_id = #mem_id# and b.game_id = #game_id#
+	</select>
+	
+	
+	<!-- 흠 매개변수로 cart_no가 엄청 많을수도 있음... 여러번 수행해야함 바깥에서 반복문으로 넣어볼게... -->
+	<delete id="deleteCart" parameterClass="String">
+		delete from cart
+		where cart_no = #cartNo#
+	</delete>
+	
+	<delete id="deleteCartGame" parameterClass="String">
+		delete from cart_game
+		where cart_no = #cartNo#
+	</delete>
+	
+	
+	<!-- 주문완료 테이블에 있는 CartNo를 조회하는 쿼리 -->
+	<select id="orderList" resultClass="String">
+		select cart_no
+		from orders
+	</select>
+	<!-- 주문중단시 사용할 delete연산.... -->
+<!-- 	<delete id="deleteOrder" parameterClass="String">
+		delete from order
+		where cart_no = #cartNo#
+	</delete> -->
+	
+	
+</sqlMap>

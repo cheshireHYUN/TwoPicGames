@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="review">
+
+	<insert id="insertReview" parameterClass="ReviewVO">
+		INSERT INTO REVIEW
+		(REV_ID, MEM_ID, GAME_ID, REV_TIT, REV_CON, REV_GRD, REV_DT)
+		VALUES(fn_rev_id,
+		#mem_id#, #game_id#, #rev_tit#, #rev_con#, #rev_grd#, sysdate)
+	</insert>
+	
+	<update id="updateReview" parameterClass="ReviewVO">
+		update review
+		set 
+		rev_tit = #rev_tit#,
+		rev_con = #rev_con#,
+		rev_dt = to_date(#rev_dt#, 'YYYY-MM-DD'),
+		rev_grd = #rev_grd#
+		where mem_id = #mem_id#
+		and game_id = #game_id#
+		and rev_id = #rev_id#
+		
+	</update>
+	
+	<delete id="deleteReview" parameterClass="ReviewVO">
+	delete from review where mem_id = #mem_id# and rev_id = #rev_id#
+	</delete>
+
+	<select id="getMemberReview" parameterClass="String"
+		resultClass="MyReviewVO">
+		SELECT B.REV_ID, A.GAME_ID, A.GAME_NAME, A.GAME_IMG, B.MEM_ID,
+		B.REV_TIT, B.REV_CON, B.REV_DT, B.REV_GRD
+		FROM GAME A, REVIEW B
+		WHERE
+		A.GAME_ID = B.GAME_ID
+		AND B.MEM_ID = #mem_id#
+	</select>
+		
+	<select id="getReview" parameterClass="String" resultClass="ReviewVO">
+		select a.mem_id, b.rev_id, b.rev_tit, b.rev_dt, b.rev_grd, b.rev_con, e.game_id
+			from member a, review b, (select c.game_id, d.rev_id
+			                            from game c, review d
+			                            where c.game_id = d.game_id) e
+			where a.mem_id = b.mem_id
+			and b.rev_id = e.rev_id
+			and b.rev_id = #rev_id#
+	</select>
+		
+	<select id="getReviewList" parameterClass="String" resultClass="MyReviewVO">
+		SELECT B.REV_ID, A.GAME_ID, A.GAME_NAME, A.GAME_IMG, B.MEM_ID,
+		B.REV_TIT, B.REV_CON, B.REV_DT, B.REV_GRD
+		FROM GAME A, REVIEW B
+		WHERE A.GAME_ID = B.GAME_ID
+	</select>
+	<select id="getReviewDetailList" parameterClass="String" resultClass="ReviewVO">
+		SELECT B.REV_ID, A.GAME_ID, A.GAME_NAME, A.GAME_IMG, B.mem_id,
+		B.REV_TIT, B.REV_CON, B.REV_DT, B.REV_GRD
+		FROM GAME A, REVIEW B, MEMBER C
+		WHERE A.GAME_ID = B.GAME_ID
+		and B.mem_id = c.mem_id
+		and a.game_id = #game_id#
+	</select>
+	
+</sqlMap>

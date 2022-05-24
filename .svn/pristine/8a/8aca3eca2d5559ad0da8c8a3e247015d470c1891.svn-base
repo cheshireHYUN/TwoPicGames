@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+	<sqlMap namespace="answer">
+
+		<resultMap class="AnswerVO" id="ansMap">
+			<result property="ansId" column="ans_id"/>
+			<result property="adminId" column="admin_id"/>
+			<result property="qesId" column="qes_id"/>
+			<result property="ansCon" column="ans_con"/>
+			<result property="ansDt" column="ans_dt"/>
+		</resultMap>
+		
+		<select id="getAnswerAll" resultMap="ansMap">
+		select *
+			from answer
+		</select>
+		
+		<select id="getQesId" resultMap="ansMap">
+		select qes_id
+			from answer
+			where qes_id = #qesId#
+		</select>
+		
+		<select id="getAnswer" resultMap="ansMap">
+		select *
+			from answer
+			where qes_id = #qesId#
+		</select>
+		
+		<insert id="insertAnswer" parameterClass="AnswerVO">
+		insert into answer(ans_id, admin_id, qes_id, ans_con, ans_dt)
+			values(fn_ans_id, 'admin', #qesId#, #ansCon#, sysdate)
+		</insert>
+		
+		<update id="updateAnswer" parameterClass="AnswerVO">
+		update answer
+			set ans_con = #ansCon#,
+			    ans_dt = sysdate
+			where qes_id = #qesId#
+		</update>	
+		
+		<delete id="deleteAnswer" parameterClass="String">
+		delete from answer
+			where qes_id = #qesId#
+		</delete>	
+	
+	</sqlMap>

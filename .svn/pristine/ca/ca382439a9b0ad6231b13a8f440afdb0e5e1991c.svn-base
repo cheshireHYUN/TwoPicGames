@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+	<sqlMap namespace="question">
+
+		<resultMap class="QuestionVO" id="qesMap">
+			<result property="qesId" column="qes_id"/>
+			<result property="memId" column="mem_id"/>
+			<result property="qesTit" column="qes_tit"/>
+			<result property="qesCon" column="qes_con"/>
+			<result property="qesDt" column="qes_dt"/>
+		</resultMap>
+		
+		<select id="getQuestionAll" resultMap="qesMap">
+		select *
+			from question
+		</select>
+		
+		<select id="getMyQuestion" parameterClass="String" resultMap="qesMap">
+		select *
+			from question
+			where mem_id = #memId#
+		</select>
+		
+		<select id="searchQuestion" resultMap="qesMap">
+		select *
+			from question
+			where qes_tit like '%'||#qesTit#||'%'
+		</select>
+		
+		<select id="getQuestion" parameterClass="String" resultMap="qesMap">
+		select *
+			from question
+			where qes_id = #qesId#
+		</select>
+		
+		<insert id="insertQuestion" parameterClass="QuestionVO">
+		insert into question(qes_id, mem_id , qes_tit, qes_con, qes_dt) <!-- 멤버아이디 불러오기 -->
+			values(fn_qes_id,#memId#, #qesTit#, #qesCon#, sysdate)
+		</insert>
+		
+		<update id="updateQuestion" parameterClass="QuestionVO">
+		update question
+			set qes_tit = #qesTit#,
+			    qes_con = #qesCon#,
+			    qes_dt = sysdate
+			where qes_id = #qesId#
+<!-- 			  and mem_id = #memId# 멤버아이디 불러오기 -->
+		</update>	
+		
+		<delete id="deleteQuestion" parameterClass="String">
+		delete from question
+			where qes_id = #qesId#
+<!-- 			  and mem_id = #memId# 멤버아이디 불러오기 -->
+		</delete>	
+	
+	</sqlMap>

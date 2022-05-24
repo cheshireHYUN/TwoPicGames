@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member">
+	<select id="getAllMember" resultClass="MemberVO">
+		SELECT * FROM MEMBER
+	</select>
+
+	<resultMap class="MemberVO" id="memMap">
+		<result property="mem_name" column="mem_name" />
+		<result property="mem_ph" column="mem_ph" />
+		<result property="mem_mail" column="mem_mail" />
+		<result property="mem_bir" column="mem_bir" />
+		<result property="mem_point" column="mem_point" />
+		<result property="mem_wit" column="mem_wit" />
+		<result property="mem_auth" column="mem_auth" />
+	</resultMap>
+
+	<select id="selectName" resultClass="String">
+		select mem_name from member
+		where mem_id = 'a001'
+	</select>
+
+	<insert id="insertMember" parameterClass="MemberVO">
+		INSERT INTO MEMBER
+		(MEM_ID, MEM_NAME, MEM_PW, MEM_PH, MEM_MAIL, MEM_BIR)
+		VALUES (#mem_id#,
+		#mem_name#, #mem_pw#, #mem_ph#, #mem_mail#, #mem_bir#)
+	</insert>
+
+	<update id="modifyInfo" parameterClass="MemberVO">
+		UPDATE MEMBER SET
+		MEM_NAME = #mem_name#, mem_ph = #mem_ph#, mem_mail = #mem_mail#,
+		mem_bir = #mem_bir#
+		WHERE MEM_ID = #mem_id#
+	</update>
+
+	<update id="modifyPw" parameterClass="MemberVO">
+		UPDATE MEMBER SET MEM_PW =
+		#mem_pw# WHERE MEM_ID = #mem_id#
+	</update>
+
+
+	<update id="withdrawMember" parameterClass="MemberVO">
+		UPDATE MEMBER SET
+		MEM_WIT = #mem_wit# WHERE MEM_ID = #mem_id#
+	</update>
+
+	<select id="getAllMemberId" resultClass="String">
+		SELECT MEM_ID FROM
+		MEMBER
+	</select>
+
+	<select id="getMember" parameterClass="String"
+		resultClass="MemberVO">
+		SELECT *
+		FROM MEMBER
+		WHERE MEM_ID = #mem_id#
+	</select>
+
+	<select id="checkMemId" parameterClass="String"
+		resultClass="String">
+		SELECT MEM_ID FROM MEMBER WHERE MEM_ID = #memId#
+	</select>
+
+	<select id="checkMemPw" parameterClass="MemberVO"
+		resultClass="String">
+		select mem_pw from member where mem_pw = #mem_pw# and
+		mem_id = #mem_id#
+	</select>
+
+	<select id="loginMember" parameterClass="MemberVO"
+		resultClass="MemberVO">
+		SELECT * FROM MEMBER WHERE MEM_ID = #mem_id# AND MEM_PW =
+		#mem_pw# AND
+		MEM_WIT = 'X'
+	</select>
+
+	<!-- <insert id="insertCodeOrder" parameterClass="MemberVO"> -->
+	<!-- INSERT INTO CODEORDER -->
+	<!-- (CODE_ID, MEM_ID, GAME_CODE) -->
+	<!-- VALUES (#code_id#, #mem_id#, #game_code#) -->
+	<!-- </insert> -->
+
+
+	<select id="searchPw" parameterClass="MemberVO"
+		resultClass="String">
+		SELECT MEM_MAIL FROM MEMBER WHERE MEM_ID = #mem_id# AND
+		MEM_NAME =
+		#mem_name# AND MEM_PH = #mem_ph#
+	</select>
+
+	<update id="updatePw" parameterClass="MemberVO">
+		update member
+		set mem_pw = #mem_pw#
+		where mem_id = #mem_id#
+		and mem_name = #mem_name#
+	</update>
+</sqlMap>
+   
+

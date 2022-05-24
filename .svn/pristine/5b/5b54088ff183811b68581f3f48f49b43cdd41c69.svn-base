@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="wishList">
+
+	<insert id="insertWishList" parameterClass="WishListVO">
+	
+	insert into wishlist values(fn_wishlist_id, #memId#, #gameId#,-1)
+	
+	</insert>
+	
+
+
+	<delete id="deleteWishList" parameterClass="String">
+		delete from wishlist
+		where wish_id = #wishId#
+	</delete>
+
+
+
+	<resultMap class="WishListVO" id="WishListMap">
+		<result property="wishId" column="wish_id"/>
+		<result property="memId" column="mem_id"/>
+		<result property="gameId" column="game_id"/>
+	</resultMap>
+	<!-- 주문완료된 게임을 제외한 위시리스트  -->
+	<select id="getWishList" parameterClass="String" resultMap="WishListMap">
+			select wish_id, mem_id, game_id 
+			from wishlist
+			where mem_id= #memId#
+			and game_id not in (
+			    select b.game_id
+			    from orders a, cart_game b, wishlist c, cart d
+			    where b.cart_no = a.cart_no and b.game_id = c.game_id and b.cart_no = d.cart_no
+			    and d.mem_id = #memId#
+			)
+	</select>
+	
+	
+	<!-- 인서트 전에 이미 해당 wishId가 DB에 있는지확인하기 -->
+	<select id="checkExist" parameterClass="String" resultClass="String">
+		select wish_id
+		from wishlist
+		where wish_id = #wishId#
+	</select>
+	
+	<resultMap class="GameVO" id="GameDetail">
+		<result property="game_id" column="game_id"/>
+		<result property="game_name" column="game_name"/>
+		<result property="game_price" column="game_price"/>
+		<result property="game_img" column="game_img"/>
+		<result property="age" column="age"/>
+	</resultMap>
+	<select id="gameDetailList" parameterClass="String" resultMap="GameDetail">
+		select *
+		from game
+		where game_id=#gameId#
+	</select>
+	
+	<select id="getMemberWishList" parameterClass="String" resultMap="WishListMap">
+		select * from wishlist where mem_id = #mem_id#
+	</select>
+	
+	
+	<resultMap class="FreeGameVO" id="freeMap">
+		<result property="game_id" column="game_id"/>
+		<result property="fgm_fdt" column="fgm_fdt"/>
+		<result property="game_price" column="game_price"/>
+	</resultMap>
+	<select id="freeGameInWish" parameterClass="String" resultMap="freeMap">
+		select a.game_id, a.fgm_fdt, b.GAME_PRICE
+		from freegame a
+		inner join game b
+		on (a.GAME_ID = b.GAME_ID)
+		where a.game_id= #gameId#
+	</select>
+	
+	<select id="getWishId" parameterClass="String" resultClass="String">
+		select wish_id
+		from wishlist
+		where mem_id=#memId# and game_id=#gameId#
+	</select>
+	
+	
+	
+</sqlMap>

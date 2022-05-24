@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="publisher">
+
+	<select id="allPubList" resultClass="PublisherVO">
+	select * from publisher
+	</select>
+		
+	<select id="nextPubId" resultClass ="String">
+		select fn_pub_no from dual
+	</select>
+		
+	<select id="getPubId" parameterClass="String" resultClass="String">
+		select c.pub_id from game a, publish b, publisher c
+		where a.game_id = b.game_id and b.pub_id = c.pub_id and c.pub_name = #pub_name#
+	</select>
+	
+	
+	<select id="isPubId" parameterClass="String" resultClass="String">
+		select pub_id from publisher where lower(pub_name) like '%' || lower(#pub_name#) || '%'
+	</select>
+
+	<insert id="insertPublisher" parameterClass="String">
+		insert into publisher values (fn_pub_no, #pub_name#)
+	</insert>
+	
+	<insert id="insertPublish" parameterClass="PublishVO">
+		insert into publish values (#game_id#,#pub_id#)
+	</insert>
+	
+	<update id="updatePublisher" parameterClass="PublisherVO">
+		update publisher
+		set pub_name = #pub_name#
+		where pub_id = #pub_id#
+	</update>
+	
+	<update id="updatePublish">
+		update publish
+		set pub_id = #pub_id#
+		where game_id = #game_id#
+	</update>
+	
+	<delete id = "deletePublish">
+		delete from publish where game_id = #game_id#
+	</delete>
+
+</sqlMap>

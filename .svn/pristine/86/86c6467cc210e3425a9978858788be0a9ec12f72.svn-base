@@ -1,0 +1,34 @@
+package orders.vo;
+
+public class OrderVO {
+	private String orderNo;
+	private String cartNo;
+	private String orderDt;
+
+	
+	public String getOrderNo() {
+		return orderNo;
+	}
+	
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
+	}
+	
+	public String getOrderDt() {
+		return orderDt;
+	}
+	
+	public void setOrderDt(String orderDt) {
+		this.orderDt = orderDt;
+	}
+
+	public String getCartNo() {
+		return cartNo;
+	}
+
+	public void setCartNo(String cartNo) {
+		this.cartNo = cartNo;
+	}
+
+	
+}

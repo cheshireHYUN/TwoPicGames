@@ -1,0 +1,25 @@
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>질문 등록</title>
+</head>
+<body>
+	<header id="header-container-fluid">
+		<jsp:include page="/main/header.jsp"/>
+		<jsp:include page="/main/headerNav.jsp"/>
+	</header>
+	<br>
+	<form action="insertQuestion.do" method="post" enctype="multipart/form-data" style="margin-left: 15px">
+		<span style="font-size: 14px"><strong>제 목</strong></span><br>
+		<input type="text" name="qesTit" value=""><br><br>
+		<span style="font-size: 14px"><strong>내 용</strong></span><br>
+		<textarea type="text" name="qesCon" value="" cols="50" rows="10"></textarea><br>
+		<input type="submit" value="질문등록">
+	</form>	
+</body>
+</html>

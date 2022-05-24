@@ -1,0 +1,30 @@
+<%@page import="notices.vo.QuestionVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	QuestionVO vo = (QuestionVO) request.getAttribute("vo");
+%>    
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>질문 수정</title>
+</head>
+<body>
+	<header id="header-container-fluid">
+		<jsp:include page="/main/header.jsp"/>
+		<jsp:include page="/main/headerNav.jsp"/>
+	</header>
+	<form action="updateQuestion.do" method="post" enctype="application/x-www-form-urlencoded">
+	<input type="hidden" name="qesId" value="<%=vo.getQesId() %>">
+	<br><span style="font-size: 14px">I D : <%=vo.getQesId() %></span>
+	<br><span style="font-size: 14px">제 목 : </span>
+	<br><span style="font-size: 14px"><input type="text" name="qesTit" value="<%=vo.getQesTit() %>"></span>
+	<br><span style="font-size: 14px">내 용:</span>
+	<br><span style="font-size: 14px"><textarea type="text" name="qesCon" value="<%=vo.getQesCon() %>"></textarea></span>
+		<input type="submit" value="질문 수정">
+	</form>
+</body>
+</html>

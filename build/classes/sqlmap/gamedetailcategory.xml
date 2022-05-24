@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="gamedetailcategory">
+	<insert id="insertGameDetailCategory" parameterClass="GameDetailCategoryVO">
+		insert into gamedetail values (#game_id#, #detail_id#)
+	</insert>
+	
+	<delete id="deleteGameDetailCagetory" parameterClass="String">
+		delete from gamedetail where game_id = #game_id#
+	</delete>
+</sqlMap>

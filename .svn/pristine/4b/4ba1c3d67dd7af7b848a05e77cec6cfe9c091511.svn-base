@@ -1,0 +1,119 @@
+<%@page import="members.review.vo.ReviewVO"%>
+<%@page import="java.util.List"%>
+<%@page import="members.member.vo.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%
+		String admin = (String) session.getAttribute("login");
+		MemberVO member = (MemberVO) session.getAttribute("loginMember");
+		ReviewVO revList = (ReviewVO) request.getAttribute("reviewVO");
+	%>
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>리뷰 수정</title>
+<link rel="stylesheet" href="../css/myReview.css">
+</head>
+<header id="header-container-fluid">
+	<jsp:include page="header.jsp" />
+	<jsp:include page="headerNav.jsp" />
+</header>
+<body>
+<%	String grd = "";
+%>
+	<form action="UpdateReview.do" method="post" enctype="application/x-www-form-urlencoded">
+	<div class="css-1ktypff" data-component="Page">
+		<div class="css-1n8met0">
+			<div class="css-s45c7f" data-component="StorePageContent">
+				<div class="css-1sqqqs8" data-component="StorePage">
+					<div class="css-bjn8wh" data-component="ProfilePrivacyPage">
+						<section class="css-17x0yd4" data-testid="section-wrapper"
+							data-component="SectionWrapper">
+							<div class="css-yewo14" data-testid="section-wrapper-content"
+								data-component="SectionWrapperContent">
+								<div class="meta-schema" data-component="DocumentHead"></div>
+								<div class="css-1bivz9r" data-component="ProfileContainerLayout">
+									<div class="css-p0rvaw">
+										<div>
+											<div>
+												<div class="css-zeyowa" data-testid="profile-username"
+													data-component="ProfileHeader">
+													<span class="css-lskqd4" data-component="Text">리뷰 수정하기</span>
+													<br>
+													<hr style="color:white;">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div data-component="RoutableTabs">
+									<ul class="css-cnqlhg">
+										<li class="css-lrwy1y">
+											<div class="css-1k6yg9d">
+												<div class="css-mytue3">
+													<div class="css-13ku56z">
+														<div class="css-1azpx8r">
+															<div class="css-1d3w5wq">
+																<input type="hidden" name="revId" value="<%=revList.getRev_id() %>">
+																<input type="hidden" name="memId" value="<%=revList.getMem_id() %>">
+																<span class="css-z3vg5b">
+																<input type="hidden" name="gameId" value="<%=revList.getGame_id() %>">
+															리뷰 제목 : <input type="text" name="revTit" value="<%=revList.getRev_tit() %>"><br>
+															<!-- 리뷰 제목 입력 -->
+																</span>
+															</div>
+															<div class="css-1d3w5wq">
+																<span class="css-11ksoqt">
+															리뷰 작성일 : <input type="text" name="revDt" value="<%=revList.getRev_dt() %>"><br>
+															<!-- 리뷰 작성일 입력 -->
+																</span>
+															</div>
+														</div>
+														<div class="css-dkvgms">
+															<div></div>
+														</div>
+														<div class="css-wt3lag">
+															<div class="css-1d3w5wq">
+																
+																	<%
+																	int revGrd = Integer.parseInt(revList.getRev_grd());
+																	if(revGrd != 0) {
+																		for(int j = 0; j < revGrd; j++) {
+																			grd += "★";
+																		}
+																	}
+																	%>
+																<span class="css-z3vg5b">
+																	리뷰 등급 : <input type="text" name="revGrd" value="<%=revList.getRev_grd() %>"><br>
+																	<!-- 반복문으로 별 출력 -->
+																	 <label class="star"></label> 
+																</span>
+															</div>
+															<div class="css-uy4qy4">
+																<span class="css-11ksoqt">
+															리뷰 내용 : <input type="text" name="revCon" value="<%=revList.getRev_con() %>"><br><br>
+															<!-- 리뷰 내용 입력 -->
+																</span>
+																<span class="css-11ksoqt">
+																<input type="submit" value="리뷰 수정"><br>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</body>
+</html>

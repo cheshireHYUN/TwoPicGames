@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="category">
+
+	<select id="allCategoryList" resultClass="categoryDetailVO">
+		select b.detail_id, a.com_name, b.detail_name from comcategory a, detailcategory b where a.com_id = b.com_id
+	</select>
+	
+	<select id="getDetailId" resultClass="String">
+	select fn_detail_id from dual
+	</select>
+	
+	<insert id="insertCategory" parameterClass="categoryVO">
+		insert into detailcategory values(#detail_id#,#com_id#,#detail_name#)
+	</insert>
+	
+	<delete id="deleteCategory" parameterClass="String">
+		delete from detailcategory where detail_id = #detail_id#
+	</delete>
+</sqlMap>

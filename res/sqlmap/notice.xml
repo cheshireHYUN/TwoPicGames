@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+	<sqlMap namespace="notice">
+
+		<resultMap class="NoticeVO" id="notMap">
+			<result property="notId" column="not_id"/>
+			<result property="notTit" column="not_tit"/>
+			<result property="notCon" column="not_con"/>
+			<result property="notDt" column="not_dt"/>
+		</resultMap>
+		
+		<select id="getNoticeAll" resultMap="notMap">
+		select *
+			from notice
+		</select>
+		
+		<select id="searchNotice" resultMap="notMap">
+		select *
+			from notice
+			where not_tit like '%'||#notTit#||'%'
+		</select>
+		
+		<select id="getNotice" parameterClass="String" resultMap="notMap">
+		select *
+			from notice
+			where not_id = #notId#
+		</select>
+		
+		<insert id="insertNotice" parameterClass="NoticeVO">
+		insert into notice(not_id, not_tit, not_con, not_dt)
+			values(fn_not_id, #notTit#, #notCon#, sysdate)
+		</insert>
+		
+		<update id="updateNotice" parameterClass="NoticeVO">
+		update notice
+			set not_tit = #notTit#,
+			    not_con = #notCon#,
+			    not_dt = sysdate
+		  where not_id = #notId#
+		</update>	
+		
+		<delete id="deleteNotice" parameterClass="String">
+		delete from notice
+			where not_id = #notId#
+		</delete>			
+	
+	</sqlMap>

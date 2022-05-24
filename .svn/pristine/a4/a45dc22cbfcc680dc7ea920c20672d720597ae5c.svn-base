@@ -1,0 +1,333 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/TwoPicStyle.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+	color: RGB(18,18,18);
+}
+</style>
+</head>
+<body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<span><div class="css-1xdp7yz">
+			<div>
+				<div>
+					<div aria-roledescription="carousel" aria-live="off"
+						data-testid="SaleCarouselDesktop" class="css-1mgolpb"
+						tabindex="-1" data-component="SaleCarouselDesktop">
+						<div class="css-1hh15gj" data-component="SliderDesktop">
+							<div class="css-u421q6" data-component="AspectRatioContainer">
+								<div class="css-han5dv">
+									<div data-testid="SliderDesktop-slide-0" aria-hidden="true"
+										aria-roledescription="slide" aria-label="1/3"
+										class="css-1t9wgpm" data-component="SliderDesktop">
+										<div class="css-ark9g" tabindex="-1"
+											data-component="CarouselContentDesktop">
+											<a role="link" href="/ko/p/fall-guys"><div
+													data-testid="slide-media-asset">
+													<div data-testid="picture" data-component="Picture">
+														<picture class="css-e4bau3" data-component="PictureImage">
+														<source media="(min-width: 1280px)"
+															srcset="https://cdn2.unrealengine.com/egs-fallguys-carousel-desktop-5222x2938-d1cf699e652f.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-image="https://cdn2.unrealengine.com/egs-fallguys-carousel-desktop-5222x2938-d1cf699e652f.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-component="PictureImage">
+														<source media="(min-width: 768px)"
+															srcset="https://cdn2.unrealengine.com/egs-fallguys-carousel-desktop-5222x2938-d1cf699e652f.jpg?h=720&amp;resize=1&amp;w=1280"
+															data-image="https://cdn2.unrealengine.com/egs-fallguys-carousel-desktop-5222x2938-d1cf699e652f.jpg?h=720&amp;resize=1&amp;w=1280"
+															data-component="PictureImage">
+														<img alt="Wishlist Fall Guys on Epic Games Store"
+															src="https://cdn2.unrealengine.com/egs-fallguys-carousel-desktop-5222x2938-d1cf699e652f.jpg?h=1080&amp;resize=1&amp;w=1920"
+															class="css-88fy8u"
+															data-image="https://cdn2.unrealengine.com/egs-fallguys-carousel-desktop-5222x2938-d1cf699e652f.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-testid="picture-image"
+															data-component="FallbackImage"></picture>
+													</div>
+													<div class="css-1qpzmhj" data-component="Skrim"></div>
+												</div></a>
+											<div class="css-3pmzyf">
+												<div data-testid="slide-description-section">
+													<div class="css-1nuxj1k"></div>
+													<h3 class="css-1qwdmuy">폴가이즈</h3>
+													<!-- <div class="css-1kodzjq">
+														<span class="css-1v7dpmq">출시 예정</span><span
+															class="css-hk4gpv"><div class="css-vetbs0"
+																data-component="LineClamp">
+																<div class="css-1h3di0n">폴가이즈가 무료 플레이로 전환됩니다! 6월
+																	21일(영국 시간)부터 Epic Games Store에서 만나보세요!</div>
+															</div></span>
+													</div> -->
+												</div>
+												<div data-testid="CarouselOffer" tabindex="-1">
+													<div class="css-14zgbwr" data-component="CarouselOffer">
+														<div class="css-9mhi7u">
+															<div class="css-1owogvj">
+																<a class="css-ickv6u" role="link" href="/ko/p/fall-guys">지금
+																	위시리스트에 추가</a>
+																<button class="css-1hzqnw0" data-component="BaseButton">
+																	<span class="css-rfip8z"
+																		data-component="WishlistCTALabel"><div
+																			class="css-mrbz4w" data-testid="wishbutton-circle"
+																			data-component="WishButtonCircle">
+																			<div data-testid="spinner" class="css-7valn4"
+																				data-component="WishButtonSpinner"></div>
+																		</div>
+																		<span class="css-15fdr99" data-component="Text"><span
+																			data-component="Message">위시리스트에 추가</span></span></span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div data-testid="SliderDesktop-slide-1" aria-hidden="true"
+										aria-roledescription="slide" aria-label="2/3"
+										class="css-1t9wgpm" data-component="SliderDesktop">
+										<div class="css-ark9g" tabindex="-1"
+											data-component="CarouselContentDesktop">
+											<a role="link"
+												href="/ko/p/vampire-the-masquerade-swansong--primogen-edition"><div
+													data-testid="slide-media-asset">
+													<div data-testid="picture" data-component="Picture">
+														<picture class="css-e4bau3" data-component="PictureImage">
+														<source media="(min-width: 1280px)"
+															srcset="https://cdn2.unrealengine.com/egs-vampire-swansong-desktop-1280x702-1248x702-8012b0b6b779.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-image="https://cdn2.unrealengine.com/egs-vampire-swansong-desktop-1280x702-1248x702-8012b0b6b779.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-component="PictureImage">
+														<source media="(min-width: 768px)"
+															srcset="https://cdn2.unrealengine.com/egs-vampire-swansong-desktop-1280x702-1248x702-8012b0b6b779.jpg?h=720&amp;resize=1&amp;w=1280"
+															data-image="https://cdn2.unrealengine.com/egs-vampire-swansong-desktop-1280x702-1248x702-8012b0b6b779.jpg?h=720&amp;resize=1&amp;w=1280"
+															data-component="PictureImage">
+														<img
+															alt="Pre-purchase Vampire: The Masquerade - Swansong on Epic Games Store"
+															src="https://cdn2.unrealengine.com/egs-vampire-swansong-desktop-1280x702-1248x702-8012b0b6b779.jpg?h=1080&amp;resize=1&amp;w=1920"
+															class="css-88fy8u"
+															data-image="https://cdn2.unrealengine.com/egs-vampire-swansong-desktop-1280x702-1248x702-8012b0b6b779.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-testid="picture-image"
+															data-component="FallbackImage"></picture>
+													</div>
+													<div class="css-1qpzmhj" data-component="Skrim"></div>
+												</div></a>
+											<div class="css-3pmzyf">
+												<div data-testid="slide-description-section">
+													<div class="css-mlhxr9"></div>
+													<h3 class="css-1qwdmuy">Vampire: The Masquerade -
+														Swansong</h3>
+													<!-- <div class="css-1kodzjq">
+														<span class="css-1v7dpmq">PC 한정 출시작- 5월 19일(미국 동부
+															시간) 사용 가능</span><span class="css-hk4gpv"><div
+																class="css-vetbs0" data-component="LineClamp">
+																<div class="css-1h3di0n">3명의 뱀파이어로 플레이하면서 이들의 힘을
+																	부리고 보스턴의 운명을 결정하세요.</div>
+															</div></span>
+													</div> -->
+												</div>
+												<div data-testid="CarouselOffer" tabindex="-1">
+													<div class="css-14zgbwr" data-component="CarouselOffer">
+														<div data-testid="price-wrapper" role="presentation"
+															data-component="CarouselPrice">
+															<span class="css-nc3gnj" data-component="Message"><span
+																class="css-14tsud1" data-testid="price-args"><div
+																		class="css-1yc1h40" data-component="PurchasePrice">
+																		<div class="css-qccvxc">
+																			<s class="css-1uubmwy" data-component="Price">₩61,000</s><span
+																				class="css-ovezyj" data-component="Price">₩54,900</span>
+																		</div>
+																	</div></span>에서 시작</span>
+														</div>
+														<div class="css-9mhi7u">
+															<div class="css-1owogvj">
+																<a class="css-ickv6u" role="link"
+																	href="/ko/p/vampire-the-masquerade-swansong--primogen-edition">지금
+																	위시리스트에 추가</a>
+																<button class="css-1hzqnw0" data-component="BaseButton">
+																	<span class="css-rfip8z"
+																		data-component="WishlistCTALabel"><div
+																			class="css-mrbz4w" data-testid="wishbutton-circle"
+																			data-component="WishButtonCircle">
+																			<div data-testid="spinner" class="css-7valn4"
+																				data-component="WishButtonSpinner"></div>
+																		</div>
+																		<span class="css-15fdr99" data-component="Text"><span
+																			data-component="Message">위시리스트에 추가</span></span></span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div data-testid="SliderDesktop-slide-2" aria-hidden="false"
+										aria-roledescription="slide" aria-label="현재 항목"
+										class="css-vdsjqy" data-component="SliderDesktop">
+										<div class="css-ark9g" tabindex="-1"
+											data-component="CarouselContentDesktop">
+											<a role="link" href="/ko/p/tiny-tinas-wonderlands"><div
+													data-testid="slide-media-asset">
+													<div data-testid="picture" data-component="Picture">
+														<picture class="css-e4bau3" data-component="PictureImage">
+														<source media="(min-width: 1280px)"
+															srcset="https://cdn2.unrealengine.com/2kgmkt-ttwl-egs-carousel-desktop-16x9-image-gunstone-1248x702-8d1d7160d230.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-image="https://cdn2.unrealengine.com/2kgmkt-ttwl-egs-carousel-desktop-16x9-image-gunstone-1248x702-8d1d7160d230.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-component="PictureImage">
+														<source media="(min-width: 768px)"
+															srcset="https://cdn2.unrealengine.com/2kgmkt-ttwl-egs-carousel-desktop-16x9-image-gunstone-1248x702-8d1d7160d230.jpg?h=720&amp;resize=1&amp;w=1280"
+															data-image="https://cdn2.unrealengine.com/2kgmkt-ttwl-egs-carousel-desktop-16x9-image-gunstone-1248x702-8d1d7160d230.jpg?h=720&amp;resize=1&amp;w=1280"
+															data-component="PictureImage">
+														<img
+															alt="Play Tiny Tina's Wonderlands on Epic Games Store"
+															src="https://cdn2.unrealengine.com/2kgmkt-ttwl-egs-carousel-desktop-16x9-image-gunstone-1248x702-8d1d7160d230.jpg?h=1080&amp;resize=1&amp;w=1920"
+															class="css-88fy8u"
+															data-image="https://cdn2.unrealengine.com/2kgmkt-ttwl-egs-carousel-desktop-16x9-image-gunstone-1248x702-8d1d7160d230.jpg?h=1080&amp;resize=1&amp;w=1920"
+															data-testid="picture-image"
+															data-component="FallbackImage"></picture>
+													</div>
+													<div class="css-1qpzmhj" data-component="Skrim"></div>
+												</div></a>
+											<div class="css-3pmzyf">
+												<div data-testid="slide-description-section">
+													<div class="css-1uooztz"></div>
+													<h3 class="css-1qwdmuy">타이니 티나의 원더랜드</h3>
+													<!-- <div class="css-1bznwnc">
+														<span class="css-1v7dpmq">스토어 한정 출시작 - 지금 출시</span><span
+															class="css-hk4gpv"><div class="css-vetbs0"
+																data-component="LineClamp">
+																<div class="css-1h3di0n">기발하고도, 놀라우며, 초강력 무기로 가득한
+																	혼란의 판타지 세계를 체험해 보세요!</div>
+															</div></span>
+													</div> -->
+												</div>
+												<div data-testid="CarouselOffer" tabindex="-1">
+													<div class="css-14zgbwr" data-component="CarouselOffer">
+														<div data-testid="price-wrapper" role="presentation"
+															data-component="CarouselPrice">
+															<span class="css-nc3gnj" data-component="Message"><span
+																class="css-14tsud1" data-testid="price-args"><div
+																		class="css-1yc1h40" data-component="PurchasePrice">
+																		<div class="css-qccvxc">
+																			<span class="css-ovezyj" data-component="Price">₩65,000</span>
+																		</div>
+																	</div></span>에서 시작</span>
+														</div>
+														<div class="css-9mhi7u">
+															<div class="css-1owogvj">
+																<a class="css-ickv6u" role="link"
+																	href="/ko/p/tiny-tinas-wonderlands">지금 구매</a>
+																<button class="css-1hzqnw0" data-component="BaseButton">
+																	<span class="css-rfip8z"
+																		data-component="WishlistCTALabel"><div
+																			class="css-mrbz4w" data-testid="wishbutton-circle"
+																			data-component="WishButtonCircle">
+																			<div data-testid="spinner" class="css-7valn4"
+																				data-component="WishButtonSpinner"></div>
+																		</div>
+																		<span class="css-15fdr99" data-component="Text"><span
+																			data-component="Message">위시리스트에 추가</span></span></span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="css-eyewj7" data-component="CarouselControlDesktop">
+							<ul class="css-bn9bcg">
+								<div class="css-1a7ee3y" data-component="WithClickTracking">
+									<li class="css-w1atjl" data-component="CarouselControlDesktop"><div
+											data-testid="CarouselThumbnail-0" class="css-9objmj"
+											tabindex="0" role="button"
+											data-component="FeaturedCarouselThumbnail">
+											<div class="css-ne46yq">
+												<div class="css-yb58t8"
+													data-component="AspectRatioContainer">
+													<div class="css-han5dv">
+														<img class="css-b4kcmh"
+															src="https://cdn2.unrealengine.com/egs-fallguys-carousel-thumbnail-krko-315x399-d855abb3a392.jpg?h=1280&amp;resize=1&amp;w=960">
+													</div>
+												</div>
+											</div>
+											<div class="css-1h6tojh">
+												<div class="css-vetbs0" data-component="LineClamp">
+													<div class="css-8uhtka" data-testid="one-line-text">폴가이즈</div>
+												</div>
+											</div>
+											<div class="css-1mlzebu" data-component="ProgressLine">
+												<div class="css-it1u5e"></div>
+												<div data-testid="CarouselProgress-0" class="css-f2nc7u"></div>
+											</div>
+										</div></li>
+								</div>
+								<div class="css-1a7ee3y" data-component="WithClickTracking">
+									<li class="css-w1atjl" data-component="CarouselControlDesktop"><div
+											data-testid="CarouselThumbnail-1" class="css-9objmj"
+											tabindex="0" role="button"
+											data-component="FeaturedCarouselThumbnail">
+											<div class="css-ne46yq">
+												<div class="css-yb58t8"
+													data-component="AspectRatioContainer">
+													<div class="css-han5dv">
+														<img class="css-b4kcmh"
+															src="https://cdn2.unrealengine.com/egs-vampire-swansong-mobile-1200x1600-1200x1600-a9307060177d.jpg?h=1280&amp;resize=1&amp;w=960">
+													</div>
+												</div>
+											</div>
+											<div class="css-1h6tojh">
+												<div class="css-vetbs0" data-component="LineClamp">
+													<div class="css-rgqwpc">Vampire: The Masquerade -
+														Swansong</div>
+												</div>
+											</div>
+											<div class="css-1mlzebu" data-component="ProgressLine">
+												<div class="css-it1u5e"></div>
+												<div data-testid="CarouselProgress-1" class="css-f2nc7u"></div>
+											</div>
+										</div></li>
+								</div>
+								<div class="css-1a7ee3y" data-component="WithClickTracking">
+									<li class="css-w1atjl" data-component="CarouselControlDesktop"><a
+										role="link" href="/ko/p/tiny-tinas-wonderlands"><div
+												data-testid="CarouselThumbnail-2" class="css-1swnkgg"
+												tabindex="0" role="button"
+												data-component="FeaturedCarouselThumbnail">
+												<div class="css-p02mvh">
+													<div class="css-yb58t8"
+														data-component="AspectRatioContainer">
+														<div class="css-han5dv">
+															<img class="css-b4kcmh"
+																src="https://cdn2.unrealengine.com/2kgmkt-ttw-std-epic-mobile-thumb-1200x1600-1200x1600-766333b75c63.jpg?h=1280&amp;resize=1&amp;w=960">
+														</div>
+													</div>
+												</div>
+												<div class="css-1h6tojh">
+													<div class="css-vetbs0" data-component="LineClamp">
+														<div class="css-rgqwpc">타이니 티나의 원더랜드</div>
+													</div>
+												</div>
+												<div class="css-1plgqh1" data-component="ProgressLine">
+													<div class="css-it1u5e"></div>
+													<div data-testid="CarouselProgress-2" class="css-8wqmkk"
+														style="animation-play-state: paused;"></div>
+												</div>
+											</div></a></li>
+								</div>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></span>
+</body>
+</html>

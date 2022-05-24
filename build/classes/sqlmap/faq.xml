@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+	<sqlMap namespace="faq">
+
+		<resultMap class="FaqVO" id="faqMap">
+			<result property="faqId" column="faq_id"/>
+			<result property="faqTit" column="faq_tit"/>
+			<result property="faqCon" column="faq_con"/>
+		</resultMap>
+		
+		<select id="getFaqAll" resultMap="faqMap">
+		select *
+			from faq
+		</select>
+		
+		<select id="getFaq" parameterClass="String" resultMap="faqMap">
+		select *
+			from faq
+			where faq_id = #faqId#
+		</select>
+		
+		<insert id="insertFaq" parameterClass="FaqVO">
+		insert into faq(faq_id, faq_tit, faq_con)
+			values(fn_faq_id, #faqTit#, #faqCon#)
+		</insert>
+		
+		<update id="updateFaq" parameterClass="FaqVO">
+		update faq
+			set faq_tit = #faqTit#,
+			    faq_con = #faqCon#
+		  where faq_id = #faqId#
+		</update>	
+		
+		<delete id="deleteFaq" parameterClass="String">
+		delete from faq
+			where faq_id = #faqId#
+		</delete>			
+	
+	</sqlMap>

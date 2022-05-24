@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="orders">
+
+
+	<resultMap class="gameVO" id="GameIdMap">
+		<result property="game_id" column="game_id"/>
+	</resultMap>
+	
+	<!-- 멤버 아이디를 파라미터로 갖고 그 멤버가 장바구니에 담은 모든 게임 아이디를 가져옴 -->
+	<select id="getCartGameId" parameterClass="String" resultMap="GameIdMap">
+		select b.game_id
+		from cart a
+		inner join cart_game b
+		on(a.CART_NO = b.CART_NO)
+		where a.mem_id = #memId#
+	</select>
+
+	<!-- 이제 장바구니에 있는 게임들의 정보둘을 가져오자 -->
+  	<resultMap class="gameVO" id="GameInfo">
+		<result property="game_id" column="game_id"/>
+		<result property="game_name" column="game_name"/>
+		<result property="game_price" column="game_price"/>
+		<result property="game_img" column="game_img"/>
+		<result property="age" column="age"/>
+	</resultMap>
+	<select id="getGameInfo" parameterClass="String" resultMap="GameInfo">
+		select game_id, game_name, game_price, game_img, age
+		from game
+		where game_id= #gameId#
+	</select>
+	
+	
+  	<resultMap class="MemberVO" id="MemInfo">
+		<result property="mem_id" column="mem_id"/>
+		<result property="mem_name" column="mem_name"/>
+		<result property="mem_mail" column="mem_mail"/>
+		<result property="mem_ph" column="mem_ph"/>
+	</resultMap>
+	<!-- memId를 이용해서 name, email, phone 찾아주기 -->
+	<select id="getMemInfo" parameterClass="String" resultMap="MemInfo">
+		select mem_id, mem_name, mem_mail, mem_ph
+		from member
+		where mem_id= #memId#
+	</select>
+
+
+	<!-- 특정 사용자가 구매 완료한 게임의game_id -->
+	<select id="getOrderedGameId" parameterClass="String" resultClass="String">
+		select game_id
+		from cart_game
+		where cart_no in (
+		select b.cart_no
+		from CART a
+		inner join orders b
+		on (a.CART_NO = b.CART_NO)
+		where a.mem_id= #memId#)
+	</select>
+	
+	
+	<!-- 구매 완료하고 나서 그 구매정보를 ORDER테이블에 넣자! -->
+	<insert id="insertOrders" parameterClass="String">
+		insert into orders values(fn_order_no, #cartNo#, sysdate)
+	</insert>
+	
+	<!-- gameId가 주어질때 카트번호 -->
+	<select id="getCartNo" parameterClass="java.util.Map" resultClass="String">
+		select a.cart_no
+		from cart_game a
+		inner join cart b
+		on (a.cart_no = b.cart_no)
+		where a.game_id= #gameId# and b.mem_id= #memId#
+	</select>
+	
+	
+	<select id="orderExist" parameterClass="String" resultClass="String">
+		select cart_no
+		from orders
+		where cart_no = #cartNo#
+	</select>
+</sqlMap>

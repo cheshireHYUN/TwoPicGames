@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="freegame">
+
+	<select id="AllFreeGameList" resultClass="gameVO">
+		select a.game_id, a.game_name, a.game_price, a.game_dev, a.rel_dt, a.game_img, a.game_trailer, a.age, b.fgm_fdt
+		from game a, freegame b where a.game_id = b.game_id
+	</select>
+
+	<select id="getFreeGameList" parameterClass="gameSearchVO"
+		resultClass="gameVO">
+		select a.game_id, a.game_name, a.game_price, a.game_img
+		from game a,
+		gamedetail b, detailcategory c, freegame d
+		where a.game_id = b.game_id
+        and b.detail_id = c.detail_id
+        and a.game_id = d.game_id
+        
+		<isNotEmpty property="detail_id1">		
+        and b.detail_id=#detail_id1#
+		</isNotEmpty>
+        <isNotEmpty property="detail_id2">
+         and a.game_id IN (select a.game_id 
+                            from game a, gamedetail b, detailcategory c, freegame d
+                            where a.game_id = b.game_id 
+                            and b.detail_id = c.detail_id
+                            and a.game_id = d.game_id
+                             and b.detail_id = #detail_id2#)
+        </isNotEmpty>
+        <isNotEmpty property="detail_id3">
+       and a.game_id IN (select a.game_id 
+                            from game a, gamedetail b, detailcategory c, freegame d
+                            where a.game_id = b.game_id 
+                            and b.detail_id = c.detail_id
+                            and a.game_id = d.game_id
+                             and b.detail_id = #detail_id3#)
+        </isNotEmpty>
+        <isNotEmpty property="detail_name1">
+        and c.detail_name like '%' || #detail_name1# || '%'
+        </isNotEmpty>
+        <isNotEmpty property="detail_name2">
+        and c.detail_name like '%' || #detail_name2# || '%'
+        </isNotEmpty>
+        <isNotEmpty property="detail_name3">
+        and c.detail_name like '%' || #detail_name3# || '%'
+        </isNotEmpty>
+        <isNotEmpty property="game_price">
+			and a.game_price &lt;= #game_price#
+		</isNotEmpty>
+		order by 1
+	</select>
+
+	<select id="getFreeGameInfo" parameterClass="String"
+		resultClass="gameVO">
+		select a.game_id, a.game_name, a.game_price, a.game_img
+		from game a, freegame b where a.game_id = b.game_id and lower(a.game_name) like '%' || lower(#game_name#) || '%'
+	</select>
+
+	<select id="getDetailFreeGameInfo" parameterClass="String"
+		resultClass="gameDetailVO">
+		select a.game_id, a.game_name, a.game_price, a.rel_dt,
+		a.age, a.game_trailer,
+		c.detail_name, d.com_name, f.pub_name
+		from game a, gamedetail
+		b, detailcategory c, comcategory d, publish e,
+		publisher f
+		where a.game_id = b.game_id and b.detail_id = c.detail_id
+		and c.com_id =
+		d.com_id
+		and a.game_id = e.game_id and e.pub_id =
+		f.pub_id and a.game_id = #game_id#
+	</select>
+</sqlMap>

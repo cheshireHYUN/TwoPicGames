@@ -1,0 +1,27 @@
+<%@page import="notices.vo.AnswerVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	AnswerVO vo = (AnswerVO) request.getAttribute("vo");
+%>    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>답변 등록</title>
+</head>
+<body>
+	<header id="header-container-fluid">
+		<jsp:include page="/main/header.jsp"/>
+		<jsp:include page="/main/headerNav.jsp"/>
+	</header>	
+	<form action="insertAnswer.do" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="qesId" value="<%=vo.getQesId() %>">
+		<span style="font-size: 14px">질문아이디 : <%=vo.getQesId() %></span><br>
+		<span style="font-size: 14px"><strong>내 용</strong></span><br>
+		<span style="font-size: 14px"><textarea type="text" name="ansCon" value="" width="2000" style="resize: none;"></textarea></span>
+		<br><input type="submit" value="답변등록">
+	</form>
+</body>
+</html>

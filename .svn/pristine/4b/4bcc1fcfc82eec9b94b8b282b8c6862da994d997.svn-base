@@ -1,0 +1,42 @@
+<%@page import="java.util.List"%>
+<%@page import="notices.vo.QuestionVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	List<QuestionVO> voList = (List<QuestionVO>) request.getAttribute("vo");
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>검색 목록</title>
+</head>
+<body>
+	<header id="header-container-fluid">
+		<jsp:include page="/main/header.jsp"/>
+		<jsp:include page="/main/headerNav.jsp"/>
+	</header>
+<form action="searchQuestion.do" method="post" enctype="multipart/form-data">
+<%
+	int voSize = voList.size();
+	if(voSize > 0) {
+		for(int i = 0; i < voSize; i++) {
+%>		
+		<br><span style="font-size: 14px">질문아이디 : <%=voList.get(i).getQesId() %></span>
+		<br><span style="font-size: 14px">멤버아이디 : <%=voList.get(i).getMemId() %></span>
+		<br><span style="font-size: 14px">제 목 : <%=voList.get(i).getQesTit() %></span>
+		<br><span style="font-size: 14px">내 용 : <%=voList.get(i).getQesCon() %></span>
+		<br><span style="font-size: 14px">일 시 : <%=voList.get(i).getQesDt() %></span>
+<%			
+		}
+	} else {
+%>
+		<br><span style="font-size: 14px">검색정보가 없습니다.</span>
+<%	
+	}
+%>		
+		<br><span style="font-size: 14px"><a href="listQuestion.do">[목록]</a></span>
+</form>	
+</body>
+</html>

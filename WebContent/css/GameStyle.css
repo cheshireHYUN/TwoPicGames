@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#left {
+	float : left;
+}
+#right {
+	float: right;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+

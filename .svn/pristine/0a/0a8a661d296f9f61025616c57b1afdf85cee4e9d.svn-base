@@ -1,0 +1,46 @@
+<%@page import="notices.vo.QuestionVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	List<QuestionVO> vo = (List<QuestionVO>) request.getAttribute("vo");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>나의 질문</title>
+</head>
+<body>
+	<header id="header-container-fluid">
+		<jsp:include page="/main/header.jsp"/>
+		<jsp:include page="/main/headerNav.jsp"/>
+	</header>
+	<br><span style="font-size: 14px" ><a href="/listQuestion.do" style="margin-left: 15px">[목록]</a></span>
+	<br>
+<%
+	int voSize = vo.size();
+	if(voSize > 0) {
+		for(int i = 0; i < voSize; i++) {
+%>			
+	<div  style="margin-left: 15px">
+		<br><span style="font-size: 14px">순번 : <%=i+1 %></a></span>
+		<br><span style="font-size: 14px">멤버아이디 : <%=vo.get(i).getMemId() %></span>
+		<br><span style="font-size: 14px"><strong>제 목 : <%=vo.get(i).getQesTit() %></strong></span>
+		<br><span style="font-size: 14px">내 용 : <%=vo.get(i).getQesCon() %></span>
+		<br><span style="font-size: 14px">일 자 : <%=vo.get(i).getQesDt() %></span>
+		<br><span style="font-size: 14px"><a href="updateQuestion.do?qesId=<%=vo.get(i).getQesId() %>">[질문 수정]</a></span>
+		<br><span style="font-size: 14px"><a href="deleteQuestion.do?qesId=<%=vo.get(i).getQesId() %>">[질문 삭제]</a></span>
+		<hr>
+	</div>	
+<%
+		}
+	} else {
+%>		
+		<br><span style="font-size: 14px">질문정보가 없습니다.</span>
+<%
+	}
+%>		
+		
+</body>
+</html>

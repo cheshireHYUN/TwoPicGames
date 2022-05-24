@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ach">
+
+	<resultMap class="AchVO" id="achMap">
+		<result property="achId" column="ach_id" />
+		<result property="achXp" column="ach_xp" />
+		<result property="achGrd" column="ach_grd" />
+		<result property="achRan" column="ach_ran" />
+		<result property="gameId" column="game_id" />
+		<result property="memId" column="mem_id" />
+	</resultMap>
+
+	<select id="getAchAll" resultMap="achMap">
+		select e.ach_id, a.mem_id, e.ach_xp, e.ach_grd, e.ach_ran, e.game_id
+		from member a, achlist b, (select c.game_id, d.ach_id,
+								d.ach_xp, d.ach_grd, d.ach_ran
+								from game c, achivement d
+								where c.game_id = d.game_id) e
+		where a.mem_id = b.mem_id
+		and b.ach_id = e.ach_id
+	</select>
+
+	<select id="getAch" resultMap="achMap">
+		select ach_id
+		from achivement
+		where ach_id = #achId#
+	</select>
+
+	<select id="getAchList" resultMap="achMap">
+		select ach_id
+		from achivement
+		where mem_id = #memId#
+	</select>
+
+	<select id="getAllAchList" parameterClass="String"
+		resultMap="achMap">
+		select a.mem_id, b.ach_id, c.game_id, c.ach_Xp, c.ach_Ran, c.ach_grd from
+		member a, achlist b, achivement c
+		where a.mem_id = b.mem_id
+		and b.ach_id = c.ach_id
+		and b.mem_id = #mem_id#
+	</select>
+
+	<insert id="insertAch" parameterClass="AchVO">
+		insert into achivement(ach_id, game_id, ach_xp, ach_grd, ach_ran) <!-- 멤버아이디 불러오기 -->
+		values(fn_ach_id, #gameId#, #achXp#, #achGrd#, #achRan#)
+	</insert>
+
+	<insert id="insertAchList" parameterClass="AchListVO">
+		insert into achlist(ach_id, mem_id) <!-- 멤버아이디 불러오기 -->
+		values(fn_ach_id, #memId#)
+	</insert>
+
+	<update id="updateAch" parameterClass="AchVO">
+		update achivement
+
+		<!-- ach_id = #orderNo#, -->
+
+		<!-- set ach_id = #orderNo#, -->
+
+		set ach_id = #achId#,
+		ach_xp = #achXp#,
+		ach_grd = #achGrd#,
+		ach_ran = #achRan#
+		where ach_id = #achId#
+		<!-- and mem_id = #memId# 멤버아이디 불러오기 -->
+	</update>
+
+	<delete id="deleteAch" parameterClass="String">
+		delete from achivement
+		where ach_id = #achId#
+		<!-- and mem_id = #memId# 멤버아이디 불러오기 -->
+	</delete>
+
+</sqlMap>
